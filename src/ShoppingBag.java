@@ -23,6 +23,7 @@ public class ShoppingBag {
 	private void grow() {  // helper method to grow the capacity
 		
 		GroceryItem[] newBag = new GroceryItem[bag.length+5];
+		capacity = capacity + 5;
 		bag = newBag;
 	}
 	
@@ -35,6 +36,12 @@ public class ShoppingBag {
 			}
 		}
 		size++;
+		
+		// Check whether the bag is full or not
+		if (size%5 == 0) {
+			grow();
+		}
+		
 	}
 	
 	//we rushed this shit, come back
