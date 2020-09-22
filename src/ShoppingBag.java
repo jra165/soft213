@@ -97,7 +97,38 @@ public class ShoppingBag {
 	} 
 	
 	
-	//public void print() { }
+	public void print() { //print each item in bag
+		
+		if(bag.length < 1) {
+			
+			System.out.println("The bag is empty!");
+			
+		}
+		
+		else {
+			
+			//singular grammar
+			if(bag.length == 1) {
+				
+				System.out.println("You have " + bag.length + " item in the bag:");
+				System.out.println(bag[0].toString());
+				System.out.println("**End of list");
+				
+			}
+			
+			//plural grammar
+			else {
+				System.out.println("You have " + bag.length + " items in the bag:");
+				for(int i = 0; i < bag.length; i++) {
+					
+					System.out.println(bag[i].toString());
+					
+				}
+				System.out.println("**End of list");
+			}
+		}
+		
+	}
 	
 	
 	public static void main(String[] args) {

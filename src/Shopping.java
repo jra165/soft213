@@ -41,6 +41,8 @@ public class Shopping {
 				}
 				
 				//remove from bag
+				//does our remove cover only removing the first instance of it
+				//where do we put the error message, here or in the actual remove method
 				else if(splitStr[0].equals("R")) {
 					
 					bag.remove(item);
@@ -57,7 +59,7 @@ public class Shopping {
 				//checkout
 				else if(splitStr[0].equals("C"))  {
 					
-					
+					//insert the print statement
 					
 				}
 				
