@@ -58,10 +58,36 @@ public class ShoppingBag {
 	}
 	
 	
-	//public double salesPrice() { } // sales total; the sum of the prices in the bag
+	public double salesPrice() { // sales total; the sum of the prices in the bag
+		double totalTax = salesTax();
+		double salesTotal = 0;
+		
+		for (int i = 0; i < bag.length; i++) {
+			salesTotal = salesTotal + bag[i].getPrice();
+		}
+		
+		salesTotal = salesTotal + totalTax;
+		
+		return salesTotal;
+	} 
 	
 	
-	//public double salesTax() { } // sales tax total of the taxable items in the bag
+	public double salesTax() { // sales tax total of the taxable items in the bag
+		double totalTax = 0;
+		double sumItems = 0;
+		double taxRate = 0.06625;
+		
+		for (int i = 0; i < bag.length; i++) {
+			if (bag[i].getTaxable() == true) {
+				sumItems+= bag[i].getPrice();
+			}
+		}
+		
+		totalTax = sumItems*taxRate;
+		
+		
+		return totalTax;
+	} 
 	
 	
 	//public void print() { }
