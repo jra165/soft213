@@ -7,6 +7,34 @@ public class Shopping {
 	//private int runningTotal = 0;
 	//private double salesTax = 0.06625;
 
+	private void checkoutBag(ShoppingBag bag) {
+		double salesTotal = bag.salesPrice() + bag.salesTax();
+		GroceryItem[] itemList = bag.getGroceryItemList();
+		int itemListSize = bag.getSize();
+		
+		if (bag.getSize() == 1) {
+			System.out.println("Checking out " + itemListSize + " item:");
+		}
+		
+		else {
+			System.out.println("Checking out " + itemListSize + " items:");
+		}
+		
+		for (int i = 0; i < itemListSize; i++) {
+			System.out.println(itemList[i].toString());
+			
+		}
+		
+		System.out.println("*Sales total: $" + bag.salesPrice());
+		System.out.println("*Sales tax: $" + bag.salesTax());
+		System.out.println("*Total amount paid: $" + salesTotal);
+		
+		itemList = null;
+		itemListSize = 0;
+		// shrink the bag????
+		
+	}
+	
 	
 	public void run() {
 		
@@ -20,7 +48,8 @@ public class Shopping {
 			while(sc.hasNext()) {
 				
 				String str = sc.nextLine();
-				String[] splitStr = str.split(" ");
+				String[] splitStr = str.split(" "); // Also need to check multiple white spaces and tabs
+				String action = splitStr[0];
 				String name = splitStr[1];
 				double price = Double.parseDouble(splitStr[2]); 
 				boolean tax = Boolean.parseBoolean(splitStr[3]);
@@ -28,12 +57,12 @@ public class Shopping {
 				
 				
 				//check for invalid command
-				if(!(splitStr[0].equals("A")) || !(splitStr[0].equals("R")) || !(splitStr[0].equals("P")) || !(splitStr[0].equals("C")) || !(splitStr[0].equals("Q"))) {		
+				if(!(action.equals("A")) || !(action.equals("R")) || !(action.equals("P")) || !(action.equals("C")) || !(action.equals("Q"))) {		
 					System.out.println("Invalid command!");
 				}
 				
 				//add
-				if(splitStr[0].equals("A")) {
+				if(action.equals("A")) {
 					
 					bag.add(item);
 					System.out.println(name + " added to the bag.");
@@ -43,31 +72,49 @@ public class Shopping {
 				//remove from bag
 				//does our remove cover only removing the first instance of it
 				//where do we put the error message, here or in the actual remove method
-				else if(splitStr[0].equals("R")) {
+				else if(action.equals("R")) {
 					
-					bag.remove(item);
+					if (bag.remove(item)) {
+						System.out.println(name + " $" + price + " removed.");
+					}
+					else {
+						System.out.println("Unable to remove, this item is not in the bag.");
+					}
 					
 				}
 				
 				//display items in bag
-				else if(splitStr[0].equals("P"))  {
+				else if(action.equals("P"))  {
 					
 					bag.print();
 					
 				}
 
 				//checkout
-				else if(splitStr[0].equals("C"))  {
+				else if(action.equals("C"))  {
 					
-					//insert the print statement
+					if (bag.getSize() < 1) {
+						System.out.println("Unable to check out, the bag is empty!");
+					}
+					else {
+						checkoutBag(bag);
+					}
+					
 					
 				}
 				
 				//quit program and automatically checkout
-				else if(splitStr[0].equals("Q"))  {
+				else if(action.equals("Q"))  {
 					
+					if (bag.getSize() >= 1) {
+						checkoutBag(bag);
+					}
+					else {
+						System.out.println("Thank you for shopping with us!");
+					}
+							
 					break;
-					
+		
 				}
 				
 			}

@@ -7,6 +7,20 @@ public class ShoppingBag {
 	public ShoppingBag() { }
 	
 	
+	// Getter methods for retrieving private variables from different classes
+	public GroceryItem[] getGroceryItemList() {
+		return bag;
+	}
+	
+	public int getSize() {
+		return size;
+	}
+	
+	public int getCapacity() {
+		return capacity;
+	}
+	
+	
 	private int find(GroceryItem item) {  // helper method to find an item
 		
 		for (int i = 0; i < bag.length; i++) {
@@ -66,14 +80,14 @@ public class ShoppingBag {
 	
 	
 	public double salesPrice() { // sales total; the sum of the prices in the bag
-		double totalTax = salesTax();
+		//double totalTax = salesTax();
 		double salesTotal = 0;
 		
 		for (int i = 0; i < bag.length; i++) {
 			salesTotal = salesTotal + bag[i].getPrice();
 		}
 		
-		salesTotal = salesTotal + totalTax;
+		//salesTotal = salesTotal + totalTax;
 		
 		return salesTotal;
 	} 
