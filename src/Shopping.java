@@ -85,7 +85,7 @@ public class Shopping {
 				double price = 0;
 				boolean tax = false;
 				
-				//set above variables (to be used as GroceryItem parameters ) to properly casted data types
+				//
 				for(int i = 0; i < inputArr.length; i++) {
 					
 					if(i == 0 && inputArr[0] != null) {
@@ -118,15 +118,18 @@ public class Shopping {
 					System.out.println("Invalid command!");
 				}
 				
-				
-				if(action.equals("A")) { //add item to bag
+				//add
+				if(action.equals("A")) {
 					
 					bag.add(item);
 					//System.out.println(name + " added to the bag.");
 					
 				}
 				
-				else if(action.equals("R")) { //remove item from bag
+				//remove from bag
+				//does our remove cover only removing the first instance of it
+				//where do we put the error message, here or in the actual remove method
+				else if(action.equals("R")) {
 					
 					bag.remove(item);
 					/*if (bag.remove(item)) {
@@ -139,14 +142,14 @@ public class Shopping {
 				}
 				
 				//display items in bag
-				else if(action.equals("P"))  { //print items in bag
+				else if(action.equals("P"))  {
 					
 					bag.print();
 					
 				}
 
 				//checkout
-				else if(action.equals("C"))  { //checkout items in bag
+				else if(action.equals("C"))  {
 					
 					if (bag.getSize() < 1) {
 						System.out.println("Unable to check out, the bag is empty!");
@@ -155,10 +158,11 @@ public class Shopping {
 						bag = checkoutBag(bag);
 					}
 					
+					
 				}
 				
-				
-				else if(action.equals("Q"))  { //quit program and automatically checkout
+				//quit program and automatically checkout
+				else if(action.equals("Q"))  {
 					
 					if (bag.getSize() >= 1) {
 						bag = checkoutBag(bag);
@@ -170,6 +174,8 @@ public class Shopping {
 					break;
 		
 				}
+					
+				
 					
 			}
 			
