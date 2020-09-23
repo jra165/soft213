@@ -4,11 +4,23 @@ import java.text.DecimalFormat;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
+/**
+The Shopping class is the user interface class that handles inputs commands, outputs data, and messages. 
+Input commands should begin with either A, R, P, C, Q as standalone strings.
+Assume that commands beginning with A or R are followed by item name, price, and taxability.
+Commands beginning with P, C, or Q should stand alone and should not be followed by any other characters.
+@author Joshua Atienza, Kyle Lee
+*/
+
 public class Shopping {
 	
-	//private int runningTotal = 0;
-	//private double salesTax = 0.06625;
-
+	/**
+	Checks out GroceryItems within the bag.
+	List items in the bag being checked out.
+	Calculates sales price, sales tax, and total amount paid accordingly.
+	@param bag The ShoppingBag of items being checked out
+	@return bag A new empty ShoppingBag with the default data fields
+	*/
 	private ShoppingBag checkoutBag(ShoppingBag bag) {
 		double salesTotal = bag.salesPrice() + bag.salesTax();
 		GroceryItem[] itemList = bag.getGroceryItemList();
@@ -36,11 +48,13 @@ public class Shopping {
 		
 		bag = new ShoppingBag();
 		
-		//System.out.println("#####SIZE OF CLEARED BAG#####: " + bag.getGroceryItemList().length);
 		return bag;
+		
 	}
 	
-	
+	/**
+	Runs the project, reads text file with input commands, and returns outputs/messages accordingly.
+	*/
 	public void run() {
 		
 		ShoppingBag bag = new ShoppingBag();
@@ -48,9 +62,9 @@ public class Shopping {
 		System.out.println("Let's start shopping!");
 		try {
 			
-			Scanner sc = new Scanner(new File("src/TestCases.txt"));
+			Scanner sc = new Scanner(new File("src/TestCases.txt")); //read .txt file
 			
-			while(sc.hasNext()) {
+			while(sc.hasNext()) { //reads .txt file line by line
 				
 				String[] inputArr = new String[4];
 				String str = sc.nextLine().trim();
@@ -59,7 +73,7 @@ public class Shopping {
 				
 			    
 				int count = 0;
-				while (st.hasMoreTokens()) {
+				while (st.hasMoreTokens()) { //reads each token of current line and appends
 			    	if (count <= 4) {
 			    		inputArr[count] = st.nextToken();
 			    		count++;

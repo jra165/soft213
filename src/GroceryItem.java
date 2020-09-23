@@ -25,7 +25,7 @@ public class GroceryItem {
 	}
 	
 	/**
-	Gets the name of GroceryItem
+	Gets the name of GroceryItem.
 	@return name of GroceryItem
 	*/
 	public String getName() {
@@ -33,7 +33,7 @@ public class GroceryItem {
 	}
 
 	/**
-	Gets the price of GroceryItem
+	Gets the price of GroceryItem.
 	@return price of GroceryItem
 	*/
 	public double getPrice() {
@@ -41,7 +41,7 @@ public class GroceryItem {
 	}
 	
 	/**
-	Gets the taxability of GroceryItem
+	Gets the taxability of GroceryItem.
 	@return true if GroceryItem is taxable, false otherwise
 	*/
 	public boolean getTaxable() {
@@ -49,8 +49,8 @@ public class GroceryItem {
 	}
 
 	/**
-	Checks if GroceryItem is equivalent to obj being compared to
-	Checks if obj is instanceof GroceryItem and if properties between the two objects are equivalent
+	Checks if GroceryItem is equivalent to obj being compared to.
+	Checks if obj is instanceof GroceryItem and if all data fields between the two objects are equivalent.
 	@param obj The object being compared to a particular GroceryItem
 	@return true if GroceryItem is equivalent to object, false otherwise
 	*/
@@ -71,7 +71,7 @@ public class GroceryItem {
 	/**
 	Converts GroceryItem object to String representation.
 	String representation follows the format "itemName: $xx.xx : tax free."
-	@return groceryItemString The string representation of GroceryItem obejct
+	@return item_info The string representation of GroceryItem obejct
 	*/
 	public String toString() {
 		
@@ -86,8 +86,8 @@ public class GroceryItem {
 			tax_check = "is taxable";
 		}
 		
-		String groceryitemString = this.name + ": $" + rounded_price + " : " + tax_check;
-		return groceryitemString;
+		String item_info = this.name + ": $" + rounded_price + " : " + tax_check;
+		return item_info;
 		
 	}
 	

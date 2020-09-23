@@ -1,27 +1,46 @@
 import java.text.DecimalFormat;
 
+/**
+The ShoppingBag class represents a shopping bag as an array of items.
+Property of ShoppingBag is size.
+Methods associated with ShoppingBag are getGroceryItemList, getSize, find, grow,
+add, remove, salesTax, salesPrice, printItems (described above each respective method)
+@author Joshua Atienza, Kyle Lee
+*/
+
 public class ShoppingBag {
-	private GroceryItem[] bag = new GroceryItem[5]; // array-based implementation of the bag
-	private int size = 0; // number of items currently in the bag
+	private GroceryItem[] bag = new GroceryItem[5];
+	private int size = 0;
 	
+	/**
+	Creates a ShoppingBag with null array of size 5.
+	*/
 	public ShoppingBag() { }
 	
 	
-	// Getter methods for retrieving private variables from different classes
+	/**
+	Gets the array of GroceryItem objects associated with the ShoppingBag.
+	@return bag The array-based implementation of the bag
+	*/
 	public GroceryItem[] getGroceryItemList() {
 		return bag;
 	}
 	
+	/**
+	Gets the size of the ShoppingBag.
+	@return size The number of items currently in the ShoppingBag
+	*/
 	public int getSize() {
 		return size;
 	}
 	
-	//public int getCapacity() {
-	//	return capacity;
-	//}
-	
-	
-	private int find(GroceryItem item) {  // helper method to find an item
+	/**
+	Finds a specific item in the bag and returns its index in the array.
+	Performs a linear search for the target item.
+	@param item The GroceryItem being searched for
+	@return i The index of the found item, -1 if item does not exist in the bag
+	*/
+	private int find(GroceryItem item) {
 		
 		for (int i = 0; i < bag.length; i++) {
 			if (item.equals(bag[i])) {
@@ -33,12 +52,15 @@ public class ShoppingBag {
 		
 	}
 	
-	private void grow() {  // helper method to grow the capacity
+	/**
+	Grows the capacity of the bag by copying over object references from old array to new array.
+	Capacity of the bag increases by 5 when grow() is called.
+	*/
+	private void grow() {
 		
 		GroceryItem[] temp = bag;
 		bag = new GroceryItem[bag.length+5];
 		System.out.println("Bag length: " + bag.length);
-		//capacity = capacity + 5;
 		
 		for (int i = 0; i < temp.length; i++) {
 			bag[i] = temp[i];
@@ -46,7 +68,11 @@ public class ShoppingBag {
 		
 	}
 	
-	
+	/**
+	Adds specified GroceryItem to bag.
+	GroceryItem is added in the next immediately available index within the array, and size field increases by 1.
+	@param item The GroceryItem being added to the bag
+	*/
 	public void add(GroceryItem item) { 
 		for (int i = 0; i < bag.length; i++) {
 			if (bag[i] == null) {
@@ -56,25 +82,30 @@ public class ShoppingBag {
 		}
 		size++;
 		
-		// Check whether the bag is full or not
-		if (size%5 == 0) {
+		if (size%5 == 0) { //checks whether the bag is full or not
 			grow();
 		}
 		
 	}
+
 	
-	//we rushed this shit, come back
+	/**
+	Removes specified GroceryItem from bag.
+	Replaces the removing element with the last element, and size field decreases by 1.
+	@param item The GroceryItem being removed from the bag
+	@return true if GroceryItem successfully removed, false if GroceryItem not found found or bag empty
+	*/
 	public boolean remove(GroceryItem item) { 
 		
 		int index = find(item);
 		
-		if(index == -1 || size < 1) {
+		if(index == -1 || size < 1) { //checks if item not found or bag empty
 			
 			return false;
 			
 		}
 		
-		bag[index] = bag[size-1];
+		bag[index] = bag[size-1]; //replaces removing element with last element
 		bag[size-1] = null;
 		
 		size--;
@@ -82,8 +113,11 @@ public class ShoppingBag {
 		
 	}
 	
-	
-	public double salesPrice() { // sales total; the sum of the prices in the bag
+	/**
+	Calculates the sum of the prices in the bag.
+	@return salesTotal The sum of the prices of each item in the bag
+	*/
+	public double salesPrice() {
 		double salesTotal = 0;
 		
 		
@@ -94,8 +128,11 @@ public class ShoppingBag {
 		return salesTotal;
 	} 
 	
-	
-	public double salesTax() { // sales tax total of the taxable items in the bag
+	/**
+	Calculates the sales tax total of the taxable items in the bag.
+	@return totalTax The sales tax total of only the taxable items in the bag
+	*/
+	public double salesTax() {
 		double totalTax = 0;
 		double sumItems = 0;
 		double taxRate = 0.06625;
@@ -112,10 +149,13 @@ public class ShoppingBag {
 		return totalTax;
 	} 
 	
-	
+	/**
+	Prints string representation of each item in the bag.
+	Adjusts grammar of printed statement according to number of items in bag.
+	*/
 	public void print() { //print each item in bag
 		
-		if(size < 1) {
+		if(size < 1) { //empty bag
 			
 			System.out.println("The bag is empty!");
 			
@@ -123,8 +163,7 @@ public class ShoppingBag {
 		
 		else {
 			
-			//singular grammar
-			if(size == 1) {
+			if(size == 1) { //singular grammar
 				
 				System.out.println("You have " + size + " item in the bag:");
 				System.out.println(bag[0].toString());
@@ -132,8 +171,7 @@ public class ShoppingBag {
 				
 			}
 			
-			//plural grammar
-			else {
+			else { //plural grammar
 				System.out.println("You have " + size + " items in the bag:");
 				for(int i = 0; i < size; i++) {
 					
