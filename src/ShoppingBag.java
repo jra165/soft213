@@ -30,7 +30,6 @@ public class ShoppingBag {
 			}
 		}
 		
-		//System.out.println("Error");
 		return -1;
 		
 	}
@@ -41,15 +40,11 @@ public class ShoppingBag {
 		bag = new GroceryItem[bag.length+5];
 		System.out.println("Bag length: " + bag.length);
 		capacity = capacity + 5;
-		//newBag = bag;
 		
 		for (int i = 0; i < temp.length; i++) {
 			bag[i] = temp[i];
 		}
 		
-		//System.out.println("Bag length2: " + bag.length);
-		//System.out.println("Bag Size: " + bag.length);
-		//System.out.println("Capacity: " + capacity);
 	}
 	
 	
@@ -64,8 +59,6 @@ public class ShoppingBag {
 		
 		// Check whether the bag is full or not
 		if (size%5 == 0) {
-			//System.out.println("HERE");
-			//System.out.println("Size: " + size);
 			grow();
 		}
 		
@@ -84,9 +77,6 @@ public class ShoppingBag {
 		
 		bag[index] = bag[size-1];
 		bag[size-1] = null;
-		//for (int i = index; i < bag.length - 1; i++) {
-		//	bag[i] = bag[i+1];
-		//}
 		
 		size--;
 		return true;
@@ -95,18 +85,12 @@ public class ShoppingBag {
 	
 	
 	public double salesPrice() { // sales total; the sum of the prices in the bag
-		//double totalTax = salesTax();
 		double salesTotal = 0;
-		//DecimalFormat df = new DecimalFormat("##.##");
 		
 		
 		for (int i = 0; i < size; i++) {
 			salesTotal = salesTotal + bag[i].getPrice();
-		}
-		//double salesTotalRounded = df.format(salesTotal);
-		
-		//salesTotal = salesTotal + totalTax;
-		
+		}		
 		
 		return salesTotal;
 	} 
@@ -154,10 +138,6 @@ public class ShoppingBag {
 				System.out.println("You have " + size + " items in the bag:");
 				for(int i = 0; i < size; i++) {
 					
-					//System.out.println("Check: " + bag[i].getName());
-					//System.out.println("Check: " + bag[i].getPrice());
-					//System.out.println("size: " + size);
-					//System.out.println(bag[i].getName());
 					System.out.println(bag[i].toString());
 					
 				}

@@ -40,12 +40,9 @@ public class GroceryItem {
 	
 	public String toString() {
 		
-		//System.out.println("entered");
-		
 		String tax_check;
 		DecimalFormat df = new DecimalFormat("##.##");
 		String rounded_price = df.format(this.price);
-		
 		
 		if (this.taxable == false) {
 			tax_check = "tax free";

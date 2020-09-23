@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.text.DecimalFormat;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
@@ -26,9 +27,11 @@ public class Shopping {
 			
 		}
 		
-		System.out.println("*Sales total: $" + bag.salesPrice());
-		System.out.println("*Sales tax: $" + bag.salesTax());
-		System.out.println("*Total amount paid: $" + salesTotal);
+		DecimalFormat df = new DecimalFormat("##.##");
+		
+		System.out.println("*Sales total: $" + df.format(bag.salesPrice()));
+		System.out.println("*Sales tax: $" + df.format(bag.salesTax()));
+		System.out.println("*Total amount paid: $" + df.format(salesTotal));
 		
 		
 		bag = new ShoppingBag();
