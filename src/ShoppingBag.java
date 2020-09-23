@@ -219,13 +219,13 @@ public class ShoppingBag {
 		
 		// ShoppingBag.add() : Test Case 1 -> Add an item into bag normally 
 		System.out.println("***.add(): "
-				+ "Case 1 (Add milk to bag)***");
+							+ "Case 1 (Add milk to bag)***");
 		traderJoes.add(milk);
 		System.out.println();
 		
 		// ShoppingBag.add() : Test Case 2 -> Add an item into bag and size%5 == 0 (Requires GroceryItem.grow())
 		System.out.println("***.add(): "
-				+ "Case 2 (Add eggs, toast, meat, and bread to bag to check if bag grows)***");
+							+ "Case 2 (Add eggs, toast, meat, and bread to bag to check if bag grows)***");
 		traderJoes.add(eggs);
 		traderJoes.add(toast);
 		traderJoes.add(meat);
@@ -241,7 +241,7 @@ public class ShoppingBag {
 	
 		// ShoppingBag.grow() : Test Case 1 -> Bag inherently grows when size%5 == 0 (Builds off of test case 2 of Add)
 		System.out.println("***.grow(): "
-				+ "Case 1 (Check to see if bag grows by 5 given size%5 == 0)***");
+							+ "Case 1 (Check to see if bag grows by 5 given size%5 == 0)***");
 		System.out.println("BAG CAPACITY: " + traderJoes.bag.length);
 		System.out.println("CURRENT # ITEMS IN BAG: " + traderJoes.size);
 		System.out.println();
@@ -254,7 +254,7 @@ public class ShoppingBag {
 		
 		// ShoppingBag.find() : Test Case 1 -> Find an item that exists in the bag
 		System.out.println("***.find(): "
-				+ "Case 1 (Check to see if item exists in bag for normal case)***");
+							+ "Case 1 (Check to see if item exists in bag for normal case)***");
 		int index = traderJoes.find(eggs);
 		System.out.println("Index of " + eggs.getName() + ": " + index);
 		System.out.println();
@@ -262,7 +262,7 @@ public class ShoppingBag {
 		
 		// ShoppingBag.find() : Test Case 2 -> Find an item that DOES NOT exist in the bag (returns -1)
 		System.out.println("***.find(): "
-				+ "Case 2 (Check to see if item exists in bag when it does not exist)***");
+							+ "Case 2 (Check to see if item exists in bag when it does not exist)***");
 		index = traderJoes.find(jelly);
 		System.out.println("Index of " + jelly.getName() + ": " + index);
 		System.out.println();
@@ -275,21 +275,21 @@ public class ShoppingBag {
 		
 		// ShoppingBag.remove() : Test Case 1 -> Remove an item from a bag normally
 		System.out.println("***.remove(): "
-				+ "Case 1 (Remove EGGS from ShoppingBag instance)***");
+							+ "Case 1 (Remove EGGS from ShoppingBag instance)***");
 		System.out.println("STATUS: " + traderJoes.remove(eggs));
 		System.out.println("CURRENT # ITEMS IN BAG: " + traderJoes.size);
 		System.out.println();
 		
 		// ShoppingBag.remove() : Test Case 2 -> Remove an item from a bag when it does not exist
 		System.out.println("***.remove(): "
-				+ "Case 2 (Remove JELLY from ShoppingBag instance traderJoes)***");
+							+ "Case 2 (Remove JELLY from ShoppingBag instance traderJoes)***");
 		System.out.println("STATUS: " + traderJoes.remove(jelly));
 		System.out.println("CURRENT # ITEMS IN BAG: " + traderJoes.size);
 		System.out.println();
 		
 		// ShoppingBag.remove() : Test Case 3 -> Remove an item from a bag when it is empty
 		System.out.println("***.remove(): "
-				+ "Case 3 (Remove JELLY from ShoppingBag instance wegmans, which is empty)***");
+							+ "Case 3 (Remove JELLY from ShoppingBag instance wegmans, which is empty)***");
 		System.out.println("STATUS: " + wegmans.remove(jelly));
 		System.out.println("CURRENT # ITEMS IN BAG: " + wegmans.size);
 		System.out.println();
