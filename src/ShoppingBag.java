@@ -215,10 +215,6 @@ public class ShoppingBag {
 		// ShoppingBag.add() : Test Case 1 -> Add an item into bag normally 
 		System.out.println("##--ADD Method: Test Case 1 (Add MILK in ShoppingBag instance)--##");
 		traderJoes.add(milk);
-		wegmans.add(jelly);
-		for (int i = 0; i < traderJoes.size; i++) {
-			System.out.println("CURRENT ITEM(S) IN BAG: " + traderJoes.bag[i].toString());
-		}
 		
 		// ShoppingBag.add() : Test Case 2 -> Add an item into bag and size%5 == 0 (Requires GroceryItem.grow())
 		System.out.println("##--ADD Method: Test Case 2 (Add EGGS, TOAST, MEAT, and BREAD in ShoppingBag to check if bag grows)--##");
@@ -226,9 +222,7 @@ public class ShoppingBag {
 		traderJoes.add(toast);
 		traderJoes.add(meat);
 		traderJoes.add(bread);
-		for (int i = 0; i < traderJoes.size; i++) {
-			System.out.println("CURRENT ITEM(S) IN BAG: " + traderJoes.bag[i].toString());
-		}
+		System.out.println("BAG CAPACITY: " + traderJoes.bag.length);
 		
 		
 		// GROW METHOD //
@@ -261,24 +255,29 @@ public class ShoppingBag {
 		System.out.println("STATUS: " + traderJoes.remove(eggs));
 		System.out.println("CURRENT # ITEMS IN BAG: " + traderJoes.size);
 		
-		// ShoppingBag.remove() : Test Case 2 -> Remove an item from a bag when it is empty OR does not exist
-		System.out.println("##--REMOVE Method: Test Case 2 (Remove JELLY from ShoppingBag instance)--##");
+		// ShoppingBag.remove() : Test Case 2 -> Remove an item from a bag when it does not exist
+		System.out.println("##--REMOVE Method: Test Case 2 (Remove JELLY from ShoppingBag instance traderJoes)--##");
 		System.out.println("STATUS: " + traderJoes.remove(jelly));
 		System.out.println("CURRENT # ITEMS IN BAG: " + traderJoes.size);
+		
+		// ShoppingBag.remove() : Test Case 2 -> Remove an item from a bag when it is empty
+		System.out.println("##--REMOVE Method: Test Case 3 (Remove JELLY from ShoppingBag instance wegmans)--##");
+		System.out.println("STATUS: " + wegmans.remove(jelly));
+		System.out.println("CURRENT # ITEMS IN BAG: " + wegmans.size);
 		
 		
 		// SALESTAX METHOD //
 		
 		// ShoppingBag.salesTax() : Test Case 1 -> Calculate sales tax of bag
 		System.out.println("##--SALESTAX Method: Test Case 1--##");
-		System.out.println("Sales Tax: " + traderJoes.salesTax());
+		System.out.println("Sales Tax: " + "$" + traderJoes.salesTax());
 		
 		
 		// SALESPRICE METHOD // 
 		
 		// ShoppingBag.salesPrice() : Test Case 1 -> Calculate sales price of bag
 		System.out.println("##--SALESPRICE Method: Test Case 1--##");
-		System.out.println("Sales Tax: " + traderJoes.salesPrice());
+		System.out.println("Sales Price: " + "$" + traderJoes.salesPrice());
 		
 		
 		// PRINT METHOD //
@@ -289,6 +288,7 @@ public class ShoppingBag {
 		
 		// ShoppingBag.print() : Test Case 2 -> One item in bag
 		System.out.println("##--PRINT Method: Test Case 2--##");
+		wegmans.add(jelly);
 		wegmans.print();
 		
 		// ShoppingBag.print() : Test Case 3 -> Multiple items in bag
