@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import java.util.StringTokenizer;
 
 public class Shopping {
 	
@@ -29,9 +30,7 @@ public class Shopping {
 		System.out.println("*Sales tax: $" + bag.salesTax());
 		System.out.println("*Total amount paid: $" + salesTotal);
 		
-		itemList = null;
-		itemListSize = 0;
-		// shrink the bag????
+		bag = new ShoppingBag();
 		
 	}
 	
@@ -47,17 +46,69 @@ public class Shopping {
 			
 			while(sc.hasNext()) {
 				
-				String str = sc.nextLine();
-				String[] splitStr = str.split(" "); // Also need to check multiple white spaces and tabs
-				String action = splitStr[0];
-				String name = splitStr[1];
-				double price = Double.parseDouble(splitStr[2]); 
-				boolean tax = Boolean.parseBoolean(splitStr[3]);
+				String[] inputArr = new String[4];
+				String str = sc.nextLine().trim();
+				StringTokenizer st = new StringTokenizer(str);
+				
+				
+			    
+				int count = 0;
+				while (st.hasMoreTokens()) {
+			    	if (count <= 4) {
+			    		inputArr[count] = st.nextToken();
+			    		count++;
+			    	}
+			    }
+				
+				String action;
+				String name;
+				double price;
+				boolean tax;
+				
+				
+				if (inputArr[0] != null) {
+					action = inputArr[0];
+				}
+				else {
+					action = null;
+				}
+				
+				if (inputArr[1] != null) {
+					name = inputArr[1];
+				}
+				else {
+					name = null;
+				}
+				
+				if (inputArr[2] != null) {
+					price = Double.parseDouble(inputArr[2]);
+				}
+				else {
+					price = 0;
+				}
+				
+				if (inputArr[3] != null) {
+					tax = Boolean.parseBoolean(inputArr[3]);
+				}
+				else {
+					tax = false;
+				}
+				
+				
+				/*String action = inputArr[0];
+				String name = inputArr[1];
+				System.out.println("Name: " + name);
+				double price = Double.parseDouble(inputArr[2]); 
+				boolean tax = Boolean.parseBoolean(inputArr[3]);*/
+			    
 				GroceryItem item = new GroceryItem(name, price, tax);
+			    
+				//System.out.println("action: " + action);
+				//System.out.println(!action.equals("P"));
 				
 				
-				//check for invalid command
-				if(!(action.equals("A")) || !(action.equals("R")) || !(action.equals("P")) || !(action.equals("C")) || !(action.equals("Q"))) {		
+			  //check for invalid command
+				if(!(action.equals("A")) && !(action.equals("R")) && !(action.equals("P")) && !(action.equals("C")) && !(action.equals("Q"))) {	
 					System.out.println("Invalid command!");
 				}
 				
@@ -116,7 +167,9 @@ public class Shopping {
 					break;
 		
 				}
+					
 				
+					
 			}
 			
 			
