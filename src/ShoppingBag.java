@@ -153,7 +153,7 @@ public class ShoppingBag {
 	Prints string representation of each item in the bag.
 	Adjusts grammar of printed statement according to number of items in bag.
 	*/
-	public void print() { //print each item in bag
+	public void print() {
 		
 		if(size < 1) { //empty bag
 			

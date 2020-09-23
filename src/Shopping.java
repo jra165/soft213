@@ -71,11 +71,10 @@ public class Shopping {
 				StringTokenizer st = new StringTokenizer(str);
 				
 				
-			    
 				int count = 0;
-				while (st.hasMoreTokens()) { //reads each token of current line and appends
+				while (st.hasMoreTokens()) {
 			    	if (count <= 4) {
-			    		inputArr[count] = st.nextToken();
+			    		inputArr[count] = st.nextToken(); //appends current token to inputArr
 			    		count++;
 			    	}
 			    }
@@ -85,7 +84,7 @@ public class Shopping {
 				double price = 0;
 				boolean tax = false;
 				
-				
+				//
 				for(int i = 0; i < inputArr.length; i++) {
 					
 					if(i == 0 && inputArr[0] != null) {
@@ -108,21 +107,13 @@ public class Shopping {
 					
 				}
 				
-				
-				/*String action = inputArr[0];
-				String name = inputArr[1];
-				System.out.println("Name: " + name);
-				double price = Double.parseDouble(inputArr[2]); 
-				boolean tax = Boolean.parseBoolean(inputArr[3]);*/
 			    
 				GroceryItem item = new GroceryItem(name, price, tax);
-			    
-				//System.out.println("action: " + action);
-				//System.out.println(!action.equals("P"));
 				
 				
-			  //check for invalid command
-				if(!(action.equals("A")) && !(action.equals("R")) && !(action.equals("P")) && !(action.equals("C")) && !(action.equals("Q"))) {	
+				//check for invalid command
+				if(!(action.equals("A")) && !(action.equals("R")) && !(action.equals("P")) 
+						&& !(action.equals("C")) && !(action.equals("Q"))) {	
 					System.out.println("Invalid command!");
 				}
 				
