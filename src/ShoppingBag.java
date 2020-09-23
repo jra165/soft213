@@ -210,90 +210,134 @@ public class ShoppingBag {
 		ShoppingBag target = new ShoppingBag();
 		ShoppingBag wegmans = new ShoppingBag();
 		
+		System.out.println("*****Begining of test cases*****");
+		System.out.println();
+		
+		
+		System.out.println("TEST CASE #1: .add()");
 		// ADD METHOD //
 		
 		// ShoppingBag.add() : Test Case 1 -> Add an item into bag normally 
-		System.out.println("##--ADD Method: Test Case 1 (Add MILK in ShoppingBag instance)--##");
+		System.out.println("***.add(): "
+				+ "Case 1 (Add milk to bag)***");
 		traderJoes.add(milk);
+		System.out.println();
 		
 		// ShoppingBag.add() : Test Case 2 -> Add an item into bag and size%5 == 0 (Requires GroceryItem.grow())
-		System.out.println("##--ADD Method: Test Case 2 (Add EGGS, TOAST, MEAT, and BREAD in ShoppingBag to check if bag grows)--##");
+		System.out.println("***.add(): "
+				+ "Case 2 (Add eggs, toast, meat, and bread to bag to check if bag grows)***");
 		traderJoes.add(eggs);
 		traderJoes.add(toast);
 		traderJoes.add(meat);
 		traderJoes.add(bread);
 		System.out.println("BAG CAPACITY: " + traderJoes.bag.length);
+		System.out.println();
+		System.out.println();
 		
 		
+		
+		System.out.println("TEST CASE #2: .grow()");
 		// GROW METHOD //
-		
+	
 		// ShoppingBag.grow() : Test Case 1 -> Bag inherently grows when size%5 == 0 (Builds off of test case 2 of Add)
-		System.out.println("##--GROW Method: Test Case 1 (Check to see if bag grows by 5 given size%5 == 0)--##");
+		System.out.println("***.grow(): "
+				+ "Case 1 (Check to see if bag grows by 5 given size%5 == 0)***");
 		System.out.println("BAG CAPACITY: " + traderJoes.bag.length);
 		System.out.println("CURRENT # ITEMS IN BAG: " + traderJoes.size);
+		System.out.println();
+		System.out.println();
 		
 		
 		
+		System.out.println("TEST CASE #3: .find()");
 		// FIND METHOD //
 		
 		// ShoppingBag.find() : Test Case 1 -> Find an item that exists in the bag
-		System.out.println("##--FIND Method: Test Case 1 (Check to see if item exists in bag for normal case)--##");
+		System.out.println("***.find(): "
+				+ "Case 1 (Check to see if item exists in bag for normal case)***");
 		int index = traderJoes.find(eggs);
 		System.out.println("Index of " + eggs.getName() + ": " + index);
+		System.out.println();
 		
 		
 		// ShoppingBag.find() : Test Case 2 -> Find an item that DOES NOT exist in the bag (returns -1)
-		System.out.println("##--FIND Method: Test Case 2 (Check to see if item exists in bag when it does not exist)--##");
+		System.out.println("***.find(): "
+				+ "Case 2 (Check to see if item exists in bag when it does not exist)***");
 		index = traderJoes.find(jelly);
 		System.out.println("Index of " + jelly.getName() + ": " + index);
+		System.out.println();
+		System.out.println();
 		
 		
+		
+		System.out.println("TEST CASE #4: .remove()");
 		// REMOVE METHOD //
 		
 		// ShoppingBag.remove() : Test Case 1 -> Remove an item from a bag normally
-		System.out.println("##--REMOVE Method: Test Case 1 (Remove EGGS from ShoppingBag instance)--##");
+		System.out.println("***.remove(): "
+				+ "Case 1 (Remove EGGS from ShoppingBag instance)***");
 		System.out.println("STATUS: " + traderJoes.remove(eggs));
 		System.out.println("CURRENT # ITEMS IN BAG: " + traderJoes.size);
+		System.out.println();
 		
 		// ShoppingBag.remove() : Test Case 2 -> Remove an item from a bag when it does not exist
-		System.out.println("##--REMOVE Method: Test Case 2 (Remove JELLY from ShoppingBag instance traderJoes)--##");
+		System.out.println("***.remove(): "
+				+ "Case 2 (Remove JELLY from ShoppingBag instance traderJoes)***");
 		System.out.println("STATUS: " + traderJoes.remove(jelly));
 		System.out.println("CURRENT # ITEMS IN BAG: " + traderJoes.size);
+		System.out.println();
 		
-		// ShoppingBag.remove() : Test Case 2 -> Remove an item from a bag when it is empty
-		System.out.println("##--REMOVE Method: Test Case 3 (Remove JELLY from ShoppingBag instance wegmans)--##");
+		// ShoppingBag.remove() : Test Case 3 -> Remove an item from a bag when it is empty
+		System.out.println("***.remove(): "
+				+ "Case 3 (Remove JELLY from ShoppingBag instance wegmans, which is empty)***");
 		System.out.println("STATUS: " + wegmans.remove(jelly));
 		System.out.println("CURRENT # ITEMS IN BAG: " + wegmans.size);
+		System.out.println();
+		System.out.println();
 		
 		
-		// SALESTAX METHOD //
 		
-		// ShoppingBag.salesTax() : Test Case 1 -> Calculate sales tax of bag
-		System.out.println("##--SALESTAX Method: Test Case 1--##");
-		System.out.println("Sales Tax: " + "$" + traderJoes.salesTax());
-		
-		
+		System.out.println("TEST CASE #5: .salesPrice()");
 		// SALESPRICE METHOD // 
 		
 		// ShoppingBag.salesPrice() : Test Case 1 -> Calculate sales price of bag
-		System.out.println("##--SALESPRICE Method: Test Case 1--##");
+		System.out.println("***.salesPrice(): Case 1***");
 		System.out.println("Sales Price: " + "$" + traderJoes.salesPrice());
+		System.out.println();
+		System.out.println();
 		
 		
+		
+		System.out.println("TEST CASE #6: .salesTax()");
+		// SALESTAX METHOD //
+		
+		// ShoppingBag.salesTax() : Test Case 1 -> Calculate sales tax of bag
+		System.out.println("***.salesTax(): Case 1***");
+		System.out.println("Sales Tax: " + "$" + traderJoes.salesTax());
+		System.out.println();
+		System.out.println();
+		
+		
+		
+		System.out.println("TEST CASE #7: .print()");
 		// PRINT METHOD //
 		
 		// ShoppingBag.print() : Test Case 1 -> Empty bag
-		System.out.println("##--PRINT Method: Test Case 1--##");
+		System.out.println("***.print(): Case 1 (empty bag)***");
 		target.print();
+		System.out.println();
 		
 		// ShoppingBag.print() : Test Case 2 -> One item in bag
-		System.out.println("##--PRINT Method: Test Case 2--##");
+		System.out.println("***.print(): Case 2 (one item in bag)***");
 		wegmans.add(jelly);
 		wegmans.print();
+		System.out.println();
 		
 		// ShoppingBag.print() : Test Case 3 -> Multiple items in bag
-		System.out.println("##--PRINT Method: Test Case 3--##");
+		System.out.println(".print(): Case 3 (multiple items in bag)***");
 		traderJoes.print();
+		System.out.println();
+		System.out.println("*****End of test cases*****");
 		
 		
 
