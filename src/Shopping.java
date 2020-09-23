@@ -8,8 +8,6 @@ public class Shopping {
 	//private int runningTotal = 0;
 	//private double salesTax = 0.06625;
 
-<<<<<<< Updated upstream
-=======
 	private ShoppingBag checkoutBag(ShoppingBag bag) {
 		double salesTotal = bag.salesPrice() + bag.salesTax();
 		GroceryItem[] itemList = bag.getGroceryItemList();
@@ -39,7 +37,6 @@ public class Shopping {
 		return bag;
 	}
 	
->>>>>>> Stashed changes
 	
 	public void run() {
 		
@@ -52,18 +49,6 @@ public class Shopping {
 			
 			while(sc.hasNext()) {
 				
-<<<<<<< Updated upstream
-				String str = sc.nextLine();
-				String[] splitStr = str.split(" ");
-				String name = splitStr[1];
-				double price = Double.parseDouble(splitStr[2]); 
-				boolean tax = Boolean.parseBoolean(splitStr[3]);
-				GroceryItem item = new GroceryItem(name, price, tax);
-				
-				
-				//check for invalid command
-				if(!(splitStr[0].equals("A")) || !(splitStr[0].equals("R")) || !(splitStr[0].equals("P")) || !(splitStr[0].equals("C")) || !(splitStr[0].equals("Q"))) {		
-=======
 				String[] inputArr = new String[4];
 				String str = sc.nextLine().trim();
 				StringTokenizer st = new StringTokenizer(str);
@@ -112,12 +97,11 @@ public class Shopping {
 				
 			  //check for invalid command
 				if(!(action.equals("A")) && !(action.equals("R")) && !(action.equals("P")) && !(action.equals("C")) && !(action.equals("Q"))) {	
->>>>>>> Stashed changes
 					System.out.println("Invalid command!");
 				}
 				
 				//add
-				if(splitStr[0].equals("A")) {
+				if(action.equals("A")) {
 					
 					bag.add(item);
 					System.out.println(name + " added to the bag.");
@@ -127,23 +111,25 @@ public class Shopping {
 				//remove from bag
 				//does our remove cover only removing the first instance of it
 				//where do we put the error message, here or in the actual remove method
-				else if(splitStr[0].equals("R")) {
+				else if(action.equals("R")) {
 					
-					bag.remove(item);
+					if (bag.remove(item)) {
+						System.out.println(name + " $" + price + " removed.");
+					}
+					else {
+						System.out.println("Unable to remove, this item is not in the bag.");
+					}
 					
 				}
 				
 				//display items in bag
-				else if(splitStr[0].equals("P"))  {
+				else if(action.equals("P"))  {
 					
 					bag.print();
 					
 				}
 
 				//checkout
-<<<<<<< Updated upstream
-				else if(splitStr[0].equals("C"))  {
-=======
 				else if(action.equals("C"))  {
 					
 					if (bag.getSize() < 1) {
@@ -152,17 +138,13 @@ public class Shopping {
 					else {
 						bag = checkoutBag(bag);
 					}
->>>>>>> Stashed changes
 					
-					//insert the print statement
 					
 				}
 				
 				//quit program and automatically checkout
-				else if(splitStr[0].equals("Q"))  {
+				else if(action.equals("Q"))  {
 					
-<<<<<<< Updated upstream
-=======
 					if (bag.getSize() >= 1) {
 						bag = checkoutBag(bag);
 					}
@@ -170,9 +152,8 @@ public class Shopping {
 						System.out.println("Thank you for shopping with us!");
 					}
 							
->>>>>>> Stashed changes
 					break;
-					
+		
 				}
 					
 				
