@@ -66,38 +66,32 @@ public class Shopping {
 			    	}
 			    }
 				
-				String action;
-				String name;
-				double price;
-				boolean tax;
+				String action = "";
+				String name = "";
+				double price = 0;
+				boolean tax = false;
 				
 				
-				if (inputArr[0] != null) {
-					action = inputArr[0];
-				}
-				else {
-					action = null;
-				}
-				
-				if (inputArr[1] != null) {
-					name = inputArr[1];
-				}
-				else {
-					name = null;
-				}
-				
-				if (inputArr[2] != null) {
-					price = Double.parseDouble(inputArr[2]);
-				}
-				else {
-					price = 0;
-				}
-				
-				if (inputArr[3] != null) {
-					tax = Boolean.parseBoolean(inputArr[3]);
-				}
-				else {
-					tax = false;
+				for(int i = 0; i < inputArr.length; i++) {
+					
+					if(i == 0 && inputArr[0] != null) {
+						action = inputArr[0];
+						
+						if(!(action.equals("A")) && !(action.equals("R")) && !(action.equals("P")) && !(action.equals("C")) && !(action.equals("Q"))) {	
+							break;
+						}
+						
+					}
+					else if(i == 1 && inputArr[1] != null) {
+						name = inputArr[1];
+					}
+					else if(i == 2 && inputArr[2] != null) {
+						price = Double.parseDouble(inputArr[2]);
+					}
+					else if(i == 3 && inputArr[3] != null) {
+						tax = Boolean.parseBoolean(inputArr[3]);
+					}
+					
 				}
 				
 				
