@@ -1,3 +1,4 @@
+import java.text.DecimalFormat;
 
 public class ShoppingBag {
 	private GroceryItem[] bag = new GroceryItem[5]; // array-based implementation of the bag
@@ -36,9 +37,19 @@ public class ShoppingBag {
 	
 	private void grow() {  // helper method to grow the capacity
 		
-		GroceryItem[] newBag = new GroceryItem[bag.length+5];
+		GroceryItem[] temp = bag;
+		bag = new GroceryItem[bag.length+5];
+		System.out.println("Bag length: " + bag.length);
 		capacity = capacity + 5;
-		bag = newBag;
+		//newBag = bag;
+		
+		for (int i = 0; i < temp.length; i++) {
+			bag[i] = temp[i];
+		}
+		
+		//System.out.println("Bag length2: " + bag.length);
+		//System.out.println("Bag Size: " + bag.length);
+		//System.out.println("Capacity: " + capacity);
 	}
 	
 	
@@ -53,6 +64,8 @@ public class ShoppingBag {
 		
 		// Check whether the bag is full or not
 		if (size%5 == 0) {
+			//System.out.println("HERE");
+			//System.out.println("Size: " + size);
 			grow();
 		}
 		
@@ -84,12 +97,16 @@ public class ShoppingBag {
 	public double salesPrice() { // sales total; the sum of the prices in the bag
 		//double totalTax = salesTax();
 		double salesTotal = 0;
+		//DecimalFormat df = new DecimalFormat("##.##");
 		
-		for (int i = 0; i < bag.length; i++) {
+		
+		for (int i = 0; i < size; i++) {
 			salesTotal = salesTotal + bag[i].getPrice();
 		}
+		//double salesTotalRounded = df.format(salesTotal);
 		
 		//salesTotal = salesTotal + totalTax;
+		
 		
 		return salesTotal;
 	} 
@@ -100,7 +117,7 @@ public class ShoppingBag {
 		double sumItems = 0;
 		double taxRate = 0.06625;
 		
-		for (int i = 0; i < bag.length; i++) {
+		for (int i = 0; i < size; i++) {
 			if (bag[i].getTaxable() == true) {
 				sumItems+= bag[i].getPrice();
 			}
@@ -140,6 +157,7 @@ public class ShoppingBag {
 					//System.out.println("Check: " + bag[i].getName());
 					//System.out.println("Check: " + bag[i].getPrice());
 					//System.out.println("size: " + size);
+					//System.out.println(bag[i].getName());
 					System.out.println(bag[i].toString());
 					
 				}

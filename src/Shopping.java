@@ -8,7 +8,7 @@ public class Shopping {
 	//private int runningTotal = 0;
 	//private double salesTax = 0.06625;
 
-	private void checkoutBag(ShoppingBag bag) {
+	private ShoppingBag checkoutBag(ShoppingBag bag) {
 		double salesTotal = bag.salesPrice() + bag.salesTax();
 		GroceryItem[] itemList = bag.getGroceryItemList();
 		int itemListSize = bag.getSize();
@@ -30,8 +30,11 @@ public class Shopping {
 		System.out.println("*Sales tax: $" + bag.salesTax());
 		System.out.println("*Total amount paid: $" + salesTotal);
 		
+		
 		bag = new ShoppingBag();
 		
+		//System.out.println("#####SIZE OF CLEARED BAG#####: " + bag.getGroceryItemList().length);
+		return bag;
 	}
 	
 	
@@ -148,7 +151,7 @@ public class Shopping {
 						System.out.println("Unable to check out, the bag is empty!");
 					}
 					else {
-						checkoutBag(bag);
+						bag = checkoutBag(bag);
 					}
 					
 					
@@ -158,7 +161,7 @@ public class Shopping {
 				else if(action.equals("Q"))  {
 					
 					if (bag.getSize() >= 1) {
-						checkoutBag(bag);
+						bag = checkoutBag(bag);
 					}
 					else {
 						System.out.println("Thank you for shopping with us!");
