@@ -334,7 +334,7 @@ public class ShoppingBag {
 		System.out.println();
 		
 		// ShoppingBag.print() : Test Case 3 -> Multiple items in bag
-		System.out.println(".print(): Case 3 (multiple items in bag)***");
+		System.out.println("***.print(): Case 3 (multiple items in bag)***");
 		traderJoes.print();
 		System.out.println();
 		System.out.println("*****End of test cases*****");
