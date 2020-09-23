@@ -60,7 +60,6 @@ public class ShoppingBag {
 		
 		GroceryItem[] temp = bag;
 		bag = new GroceryItem[bag.length+5];
-		System.out.println("Bag length: " + bag.length);
 		
 		for (int i = 0; i < temp.length; i++) {
 			bag[i] = temp[i];
@@ -86,6 +85,8 @@ public class ShoppingBag {
 			grow();
 		}
 		
+		System.out.println(item + " added to the bag.");
+		
 	}
 
 	
@@ -99,8 +100,9 @@ public class ShoppingBag {
 		
 		int index = find(item);
 		
+		
 		if(index == -1 || size < 1) { //checks if item not found or bag empty
-			
+			System.out.println("Unable to remove, this item is not in the bag.");
 			return false;
 			
 		}
@@ -109,6 +111,7 @@ public class ShoppingBag {
 		bag[size-1] = null;
 		
 		size--;
+		System.out.println(item + " $" + item.getPrice() + " removed.");
 		return true;
 		
 	}
@@ -118,6 +121,8 @@ public class ShoppingBag {
 	@return salesTotal The sum of the prices of each item in the bag
 	*/
 	public double salesPrice() {
+		
+		DecimalFormat df = new DecimalFormat("0.00");
 		double salesTotal = 0;
 		
 		
@@ -125,7 +130,9 @@ public class ShoppingBag {
 			salesTotal = salesTotal + bag[i].getPrice();
 		}		
 		
-		return salesTotal;
+		String strSalesTotal = df.format(salesTotal);
+		
+		return Double.parseDouble(strSalesTotal);
 	} 
 	
 	/**
@@ -133,9 +140,11 @@ public class ShoppingBag {
 	@return totalTax The sales tax total of only the taxable items in the bag
 	*/
 	public double salesTax() {
+		
+		DecimalFormat df = new DecimalFormat("0.00");
 		double totalTax = 0;
 		double sumItems = 0;
-		double taxRate = 0.06625;
+		final double taxRate = 0.06625;
 		
 		for (int i = 0; i < size; i++) {
 			if (bag[i].getTaxable() == true) {
@@ -144,9 +153,9 @@ public class ShoppingBag {
 		}
 		
 		totalTax = sumItems*taxRate;
+		String strSalesTax = df.format(totalTax);
 		
-		
-		return totalTax;
+		return Double.parseDouble(strSalesTax);
 	} 
 	
 	/**
@@ -186,7 +195,105 @@ public class ShoppingBag {
 	
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
+		// TESTBED MAIN
+		
+		GroceryItem milk = new GroceryItem("milk", 2.50, true);
+		GroceryItem eggs = new GroceryItem("eggs", 1.99, false);
+		GroceryItem toast = new GroceryItem("toast", 3.14, true);
+		GroceryItem meat = new GroceryItem("meat", 7.99, true);
+		GroceryItem bread = new GroceryItem("bread", 3.99, true);
+		GroceryItem jelly = new GroceryItem("jelly", 3.99, true);
+		
+		// Constructors
+		ShoppingBag traderJoes = new ShoppingBag();
+		ShoppingBag target = new ShoppingBag();
+		ShoppingBag wegmans = new ShoppingBag();
+		
+		// ADD METHOD //
+		
+		// ShoppingBag.add() : Test Case 1 -> Add an item into bag normally 
+		System.out.println("##--ADD Method: Test Case 1 (Add MILK in ShoppingBag instance)--##");
+		traderJoes.add(milk);
+		wegmans.add(jelly);
+		for (int i = 0; i < traderJoes.size; i++) {
+			System.out.println("CURRENT ITEM(S) IN BAG: " + traderJoes.bag[i].toString());
+		}
+		
+		// ShoppingBag.add() : Test Case 2 -> Add an item into bag and size%5 == 0 (Requires GroceryItem.grow())
+		System.out.println("##--ADD Method: Test Case 2 (Add EGGS, TOAST, MEAT, and BREAD in ShoppingBag to check if bag grows)--##");
+		traderJoes.add(eggs);
+		traderJoes.add(toast);
+		traderJoes.add(meat);
+		traderJoes.add(bread);
+		for (int i = 0; i < traderJoes.size; i++) {
+			System.out.println("CURRENT ITEM(S) IN BAG: " + traderJoes.bag[i].toString());
+		}
+		
+		
+		// GROW METHOD //
+		
+		// ShoppingBag.grow() : Test Case 1 -> Bag inherently grows when size%5 == 0 (Builds off of test case 2 of Add)
+		System.out.println("##--GROW Method: Test Case 1 (Check to see if bag grows by 5 given size%5 == 0)--##");
+		System.out.println("BAG CAPACITY: " + traderJoes.bag.length);
+		System.out.println("CURRENT # ITEMS IN BAG: " + traderJoes.size);
+		
+		
+		
+		// FIND METHOD //
+		
+		// ShoppingBag.find() : Test Case 1 -> Find an item that exists in the bag
+		System.out.println("##--FIND Method: Test Case 1 (Check to see if item exists in bag for normal case)--##");
+		int index = traderJoes.find(eggs);
+		System.out.println("Index of " + eggs.getName() + ": " + index);
+		
+		
+		// ShoppingBag.find() : Test Case 2 -> Find an item that DOES NOT exist in the bag (returns -1)
+		System.out.println("##--FIND Method: Test Case 2 (Check to see if item exists in bag when it does not exist)--##");
+		index = traderJoes.find(jelly);
+		System.out.println("Index of " + jelly.getName() + ": " + index);
+		
+		
+		// REMOVE METHOD //
+		
+		// ShoppingBag.remove() : Test Case 1 -> Remove an item from a bag normally
+		System.out.println("##--REMOVE Method: Test Case 1 (Remove EGGS from ShoppingBag instance)--##");
+		System.out.println("STATUS: " + traderJoes.remove(eggs));
+		System.out.println("CURRENT # ITEMS IN BAG: " + traderJoes.size);
+		
+		// ShoppingBag.remove() : Test Case 2 -> Remove an item from a bag when it is empty OR does not exist
+		System.out.println("##--REMOVE Method: Test Case 2 (Remove JELLY from ShoppingBag instance)--##");
+		System.out.println("STATUS: " + traderJoes.remove(jelly));
+		System.out.println("CURRENT # ITEMS IN BAG: " + traderJoes.size);
+		
+		
+		// SALESTAX METHOD //
+		
+		// ShoppingBag.salesTax() : Test Case 1 -> Calculate sales tax of bag
+		System.out.println("##--SALESTAX Method: Test Case 1--##");
+		System.out.println("Sales Tax: " + traderJoes.salesTax());
+		
+		
+		// SALESPRICE METHOD // 
+		
+		// ShoppingBag.salesPrice() : Test Case 1 -> Calculate sales price of bag
+		System.out.println("##--SALESPRICE Method: Test Case 1--##");
+		System.out.println("Sales Tax: " + traderJoes.salesPrice());
+		
+		
+		// PRINT METHOD //
+		
+		// ShoppingBag.print() : Test Case 1 -> Empty bag
+		System.out.println("##--PRINT Method: Test Case 1--##");
+		target.print();
+		
+		// ShoppingBag.print() : Test Case 2 -> One item in bag
+		System.out.println("##--PRINT Method: Test Case 2--##");
+		wegmans.print();
+		
+		// ShoppingBag.print() : Test Case 3 -> Multiple items in bag
+		System.out.println("##--PRINT Method: Test Case 3--##");
+		traderJoes.print();
 		
 		
 

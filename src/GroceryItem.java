@@ -76,7 +76,7 @@ public class GroceryItem {
 	public String toString() {
 		
 		String tax_check;
-		DecimalFormat df = new DecimalFormat("##.##");
+		DecimalFormat df = new DecimalFormat("0.00");
 		String rounded_price = df.format(this.price);
 		
 		if (this.taxable == false) {
@@ -94,13 +94,7 @@ public class GroceryItem {
 	
 	public static void main(String[] args) {
 		
-		GroceryItem milk = new GroceryItem("milk", 3.645, true);
-		GroceryItem milk2 = new GroceryItem("milk", 3.63, true);
-		
-		
-		//boolean facts = milk.equals(milk2);
-		
-		System.out.println(milk.toString());
+	
 
 	}
 

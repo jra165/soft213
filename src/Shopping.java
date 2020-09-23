@@ -22,6 +22,8 @@ public class Shopping {
 	@return bag A new empty ShoppingBag with the default data fields
 	*/
 	private ShoppingBag checkoutBag(ShoppingBag bag) {
+		
+		DecimalFormat df = new DecimalFormat("0.00");
 		double salesTotal = bag.salesPrice() + bag.salesTax();
 		GroceryItem[] itemList = bag.getGroceryItemList();
 		int itemListSize = bag.getSize();
@@ -39,10 +41,9 @@ public class Shopping {
 			
 		}
 		
-		DecimalFormat df = new DecimalFormat("##.##");
 		
-		System.out.println("*Sales total: $" + df.format(bag.salesPrice()));
-		System.out.println("*Sales tax: $" + df.format(bag.salesTax()));
+		System.out.println("*Sales total: $" + bag.salesPrice());
+		System.out.println("*Sales tax: $" + bag.salesTax());
 		System.out.println("*Total amount paid: $" + df.format(salesTotal));
 		
 		
@@ -121,7 +122,7 @@ public class Shopping {
 				if(action.equals("A")) {
 					
 					bag.add(item);
-					System.out.println(name + " added to the bag.");
+					//System.out.println(name + " added to the bag.");
 					
 				}
 				
@@ -130,12 +131,13 @@ public class Shopping {
 				//where do we put the error message, here or in the actual remove method
 				else if(action.equals("R")) {
 					
-					if (bag.remove(item)) {
+					bag.remove(item);
+					/*if (bag.remove(item)) {
 						System.out.println(name + " $" + price + " removed.");
 					}
 					else {
 						System.out.println("Unable to remove, this item is not in the bag.");
-					}
+					}*/
 					
 				}
 				
