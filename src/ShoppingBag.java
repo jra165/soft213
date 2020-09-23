@@ -3,7 +3,6 @@ import java.text.DecimalFormat;
 public class ShoppingBag {
 	private GroceryItem[] bag = new GroceryItem[5]; // array-based implementation of the bag
 	private int size = 0; // number of items currently in the bag
-	private int capacity = 5; // current capacity
 	
 	public ShoppingBag() { }
 	
@@ -17,9 +16,9 @@ public class ShoppingBag {
 		return size;
 	}
 	
-	public int getCapacity() {
-		return capacity;
-	}
+	//public int getCapacity() {
+	//	return capacity;
+	//}
 	
 	
 	private int find(GroceryItem item) {  // helper method to find an item
@@ -39,7 +38,7 @@ public class ShoppingBag {
 		GroceryItem[] temp = bag;
 		bag = new GroceryItem[bag.length+5];
 		System.out.println("Bag length: " + bag.length);
-		capacity = capacity + 5;
+		//capacity = capacity + 5;
 		
 		for (int i = 0; i < temp.length; i++) {
 			bag[i] = temp[i];
