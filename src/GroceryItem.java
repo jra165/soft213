@@ -40,6 +40,7 @@ public class GroceryItem {
 	
 	public String toString() {
 		
+		//System.out.println("entered");
 		
 		String tax_check;
 		DecimalFormat df = new DecimalFormat("##.##");

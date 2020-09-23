@@ -89,10 +89,19 @@ public class Shopping {
 						tax = Boolean.parseBoolean(inputArr[3]);
 					}
 					
-				}		
+				}	
 				
+				
+				/*String action = inputArr[0];
+				String name = inputArr[1];
+				System.out.println("Name: " + name);
+				double price = Double.parseDouble(inputArr[2]); 
+				boolean tax = Boolean.parseBoolean(inputArr[3]);*/
 			    
 				GroceryItem item = new GroceryItem(name, price, tax);
+			    
+				//System.out.println("action: " + action);
+				//System.out.println(!action.equals("P"));
 				
 				
 			  //check for invalid command
