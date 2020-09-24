@@ -205,17 +205,27 @@ public class ShoppingBag {
 		GroceryItem bread = new GroceryItem("bread", 3.99, true);
 		GroceryItem jelly = new GroceryItem("jelly", 3.99, true);
 		
-		// Constructors
-		ShoppingBag traderJoes = new ShoppingBag();
-		ShoppingBag target = new ShoppingBag();
-		ShoppingBag wegmans = new ShoppingBag();
 		
 		System.out.println("*****Begining of test cases*****");
 		System.out.println();
 		
 		
-		System.out.println("TEST CASE #1: .add()");
+		// Constructors
+		System.out.println("TEST CASE #0: constructor");
+		
+		ShoppingBag traderJoes = new ShoppingBag();
+		ShoppingBag target = new ShoppingBag();
+		ShoppingBag wegmans = new ShoppingBag();
+		System.out.println(traderJoes instanceof ShoppingBag);
+		System.out.println(target instanceof ShoppingBag);
+		System.out.println(wegmans instanceof ShoppingBag);
+		System.out.println();
+		System.out.println();
+		
+		
+		
 		// ADD METHOD //
+		System.out.println("TEST CASE #1: .add()");
 		
 		// ShoppingBag.add() : Test Case 1 -> Add an item into bag normally 
 		System.out.println("***.add(): "
@@ -236,8 +246,8 @@ public class ShoppingBag {
 		
 		
 		
-		System.out.println("TEST CASE #2: .grow()");
 		// GROW METHOD //
+		System.out.println("TEST CASE #2: .grow()");
 	
 		// ShoppingBag.grow() : Test Case 1 -> Bag inherently grows when size%5 == 0 (Builds off of test case 2 of Add)
 		System.out.println("***.grow(): "
@@ -249,8 +259,8 @@ public class ShoppingBag {
 		
 		
 		
-		System.out.println("TEST CASE #3: .find()");
 		// FIND METHOD //
+		System.out.println("TEST CASE #3: .find()");
 		
 		// ShoppingBag.find() : Test Case 1 -> Find an item that exists in the bag
 		System.out.println("***.find(): "
@@ -270,8 +280,8 @@ public class ShoppingBag {
 		
 		
 		
-		System.out.println("TEST CASE #4: .remove()");
 		// REMOVE METHOD //
+		System.out.println("TEST CASE #4: .remove()");
 		
 		// ShoppingBag.remove() : Test Case 1 -> Remove an item from a bag normally
 		System.out.println("***.remove(): "
@@ -297,8 +307,8 @@ public class ShoppingBag {
 		
 		
 		
-		System.out.println("TEST CASE #5: .salesPrice()");
-		// SALESPRICE METHOD // 
+		// SALESPRICE METHOD //
+		System.out.println("TEST CASE #5: .salesPrice()"); 
 		
 		// ShoppingBag.salesPrice() : Test Case 1 -> Calculate sales price of bag
 		System.out.println("***.salesPrice(): Case 1***");
@@ -308,8 +318,8 @@ public class ShoppingBag {
 		
 		
 		
-		System.out.println("TEST CASE #6: .salesTax()");
 		// SALESTAX METHOD //
+		System.out.println("TEST CASE #6: .salesTax()");
 		
 		// ShoppingBag.salesTax() : Test Case 1 -> Calculate sales tax of bag
 		System.out.println("***.salesTax(): Case 1***");
@@ -319,8 +329,8 @@ public class ShoppingBag {
 		
 		
 		
-		System.out.println("TEST CASE #7: .print()");
 		// PRINT METHOD //
+		System.out.println("TEST CASE #7: .print()");
 		
 		// ShoppingBag.print() : Test Case 1 -> Empty bag
 		System.out.println("***.print(): Case 1 (empty bag)***");
