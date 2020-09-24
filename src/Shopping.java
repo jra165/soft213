@@ -85,13 +85,14 @@ public class Shopping {
 				double price = 0;
 				boolean tax = false;
 				
-				//
+				// 
 				for(int i = 0; i < inputArr.length; i++) {
 					
 					if(i == 0 && inputArr[0] != null) {
 						action = inputArr[0];
 						
-						if(!(action.equals("A")) && !(action.equals("R")) && !(action.equals("P")) && !(action.equals("C")) && !(action.equals("Q"))) {	
+						if(!(action.equals("A")) && !(action.equals("R")) && !(action.equals("P")) 
+								&& !(action.equals("C")) && !(action.equals("Q"))) {	
 							break;
 						}
 						
@@ -111,45 +112,32 @@ public class Shopping {
 			    
 				GroceryItem item = new GroceryItem(name, price, tax);
 				
-				
 				//check for invalid command
 				if(!(action.equals("A")) && !(action.equals("R")) && !(action.equals("P")) 
 						&& !(action.equals("C")) && !(action.equals("Q"))) {	
 					System.out.println("Invalid command!");
 				}
 				
-				//add
-				if(action.equals("A")) {
+				
+				if(action.equals("A")) {			//add item to bag
 					
 					bag.add(item);
-					//System.out.println(name + " added to the bag.");
 					
 				}
 				
-				//remove from bag
-				//does our remove cover only removing the first instance of it
-				//where do we put the error message, here or in the actual remove method
-				else if(action.equals("R")) {
+				else if(action.equals("R")) {		//remove item from bag
 					
 					bag.remove(item);
-					/*if (bag.remove(item)) {
-						System.out.println(name + " $" + price + " removed.");
-					}
-					else {
-						System.out.println("Unable to remove, this item is not in the bag.");
-					}*/
 					
 				}
 				
-				//display items in bag
-				else if(action.equals("P"))  {
+				else if(action.equals("P"))  {		//display item from bag
 					
 					bag.print();
 					
 				}
 
-				//checkout
-				else if(action.equals("C"))  {
+				else if(action.equals("C"))  { 		//checkout items in bag
 					
 					if (bag.getSize() < 1) {
 						System.out.println("Unable to check out, the bag is empty!");
@@ -157,12 +145,10 @@ public class Shopping {
 					else {
 						bag = checkoutBag(bag);
 					}
-					
-					
+						
 				}
 				
-				//quit program and automatically checkout
-				else if(action.equals("Q"))  {
+				else if(action.equals("Q"))  { 		//quit program and automatically checkout
 					
 					if (bag.getSize() >= 1) {
 						bag = checkoutBag(bag);
