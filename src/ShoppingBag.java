@@ -81,7 +81,7 @@ public class ShoppingBag {
 		}
 		size++;
 		
-		if (size%5 == 0) { //checks whether the bag is full or not
+		if (size%5 == 0) {					//checks whether the bag is full or not
 			grow();
 		}
 		
@@ -101,13 +101,13 @@ public class ShoppingBag {
 		int index = find(item);
 		
 		
-		if(index == -1 || size < 1) { //checks if item not found or bag empty
+		if(index == -1 || size < 1) {		//checks if item not found or bag empty
 			System.out.println("Unable to remove, this item is not in the bag.");
 			return false;
 			
 		}
 		
-		bag[index] = bag[size-1]; //replaces removing element with last element
+		bag[index] = bag[size-1];			//replaces removing element with last element
 		bag[size-1] = null;
 		
 		size--;
@@ -164,7 +164,7 @@ public class ShoppingBag {
 	*/
 	public void print() {
 		
-		if(size < 1) { //empty bag
+		if(size < 1) {				//empty bag
 			
 			System.out.println("The bag is empty!");
 			
@@ -172,7 +172,7 @@ public class ShoppingBag {
 		
 		else {
 			
-			if(size == 1) { //singular grammar
+			if(size == 1) {			//singular grammar
 				
 				System.out.println("**You have " + size + " item in the bag:");
 				System.out.println(bag[0].toString());
@@ -180,7 +180,7 @@ public class ShoppingBag {
 				
 			}
 			
-			else { //plural grammar
+			else {					//plural grammar
 				System.out.println("**You have " + size + " items in the bag:");
 				for(int i = 0; i < size; i++) {
 					

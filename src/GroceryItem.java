@@ -91,11 +91,6 @@ public class GroceryItem {
 		
 	}
 	
-	
-	public static void main(String[] args) {
-		
-	
 
-	}
 
 }

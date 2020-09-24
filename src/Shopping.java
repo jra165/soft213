@@ -65,7 +65,7 @@ public class Shopping {
 			
 			Scanner sc = new Scanner(new File("src/TestCases.txt")); //read .txt file
 			
-			while(sc.hasNext()) { //reads .txt file line by line
+			while(sc.hasNext()) {								//reads .txt file line by line
 				
 				String[] inputArr = new String[4];
 				String str = sc.nextLine().trim();
@@ -73,11 +73,9 @@ public class Shopping {
 				
 				
 				int count = 0;
-				while (st.hasMoreTokens()) {
-			    	if (count <= 4) {
-			    		inputArr[count] = st.nextToken(); //appends current token to inputArr
-			    		count++;
-			    	}
+				while (st.hasMoreTokens() && count < 4) {
+			    	inputArr[count] = st.nextToken();			//appends current token to inputArr
+			    	count++;
 			    }
 				
 				String action = "";
@@ -85,7 +83,7 @@ public class Shopping {
 				double price = 0;
 				boolean tax = false;
 				
-				// 
+				// iterate through inputArr which contains tokens from string input line and sets above variables to casted values 
 				for(int i = 0; i < inputArr.length; i++) {
 					
 					if(i == 0 && inputArr[0] != null) {
@@ -113,8 +111,8 @@ public class Shopping {
 				GroceryItem item = new GroceryItem(name, price, tax);
 				
 				//check for invalid command
-				if(!(action.equals("A")) && !(action.equals("R")) && !(action.equals("P")) 
-						&& !(action.equals("C")) && !(action.equals("Q"))) {	
+				if((!(action.equals("A")) && !(action.equals("R")) && !(action.equals("P")) 
+						&& !(action.equals("C")) && !(action.equals("Q")))) {	
 					System.out.println("Invalid command!");
 				}
 				
@@ -161,8 +159,6 @@ public class Shopping {
 		
 				}
 					
-				
-					
 			}
 			
 			
@@ -172,19 +168,11 @@ public class Shopping {
 			
 			
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 	}
 	
 	
-	
-	
-	public static void main(String[] args) {
 		
-
-
-	}
-	
 }
