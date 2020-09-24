@@ -32,7 +32,8 @@ A kitchen_towels 10 true
 A bagels 3.99 false
 A garbage_bags 4.59 true
 A laundry_detergent 12.99 true 
-pP
+p
+P
 A chicken 6.75 false
 A pork 4.59 false
 A shrimp 13 false

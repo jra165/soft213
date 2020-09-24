@@ -29,11 +29,11 @@ public class Shopping {
 		int itemListSize = bag.getSize();
 		
 		if (bag.getSize() == 1) {
-			System.out.println("Checking out " + itemListSize + " item:");
+			System.out.println("**Checking out " + itemListSize + " item:");
 		}
 		
 		else {
-			System.out.println("Checking out " + itemListSize + " items:");
+			System.out.println("**Checking out " + itemListSize + " items:");
 		}
 		
 		for (int i = 0; i < itemListSize; i++) {
@@ -42,8 +42,8 @@ public class Shopping {
 		}
 		
 		
-		System.out.println("*Sales total: $" + bag.salesPrice());
-		System.out.println("*Sales tax: $" + bag.salesTax());
+		System.out.println("*Sales total: $" + df.format(bag.salesPrice()));
+		System.out.println("*Sales tax: $" + df.format(bag.salesTax()));
 		System.out.println("*Total amount paid: $" + df.format(salesTotal));
 		
 		

@@ -85,7 +85,7 @@ public class ShoppingBag {
 			grow();
 		}
 		
-		System.out.println(item + " added to the bag.");
+		System.out.println(item.getName() + " added to the bag.");
 		
 	}
 
@@ -111,7 +111,7 @@ public class ShoppingBag {
 		bag[size-1] = null;
 		
 		size--;
-		System.out.println(item + " $" + item.getPrice() + " removed.");
+		System.out.println(item.getName() + " " + item.getPrice() + " removed.");
 		return true;
 		
 	}
@@ -174,14 +174,14 @@ public class ShoppingBag {
 			
 			if(size == 1) { //singular grammar
 				
-				System.out.println("You have " + size + " item in the bag:");
+				System.out.println("**You have " + size + " item in the bag:");
 				System.out.println(bag[0].toString());
 				System.out.println("**End of list");
 				
 			}
 			
 			else { //plural grammar
-				System.out.println("You have " + size + " items in the bag:");
+				System.out.println("**You have " + size + " items in the bag:");
 				for(int i = 0; i < size; i++) {
 					
 					System.out.println(bag[i].toString());
