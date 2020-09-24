@@ -1,7 +1,7 @@
 import java.text.DecimalFormat;
 
 /**
-The ShoppingBag class represents a shopping bag as an array of items.
+The ShoppingBag class is the container class that represents a shopping bag as an array of items.
 Property of ShoppingBag is size.
 Methods associated with ShoppingBag are getGroceryItemList, getSize, find, grow,
 add, remove, salesTax, salesPrice, printItems (described above each respective method)
