@@ -61,118 +61,107 @@ public class Shopping {
 		ShoppingBag bag = new ShoppingBag();
 		
 		System.out.println("Let's start shopping!");
-		try {
 			
-			Scanner sc = new Scanner(new File("src/TestCases.txt")); //read .txt file
-			
-			while(sc.hasNext()) {								//reads .txt file line by line
-				
-				String[] inputArr = new String[4];
-				String str = sc.nextLine().trim();
-				StringTokenizer st = new StringTokenizer(str);
-				
-				
-				int count = 0;
-				while (st.hasMoreTokens() && count < 4) {
-			    	inputArr[count] = st.nextToken();			//appends current token to inputArr
-			    	count++;
-			    }
-				
-				String action = "";
-				String name = "";
-				double price = 0;
-				boolean tax = false;
-				
-				// iterate through inputArr which contains tokens from string input line and sets above variables to casted values 
-				for(int i = 0; i < inputArr.length; i++) {
-					
-					if(i == 0 && inputArr[0] != null) {
-						action = inputArr[0];
-						
-						if(!(action.equals("A")) && !(action.equals("R")) && !(action.equals("P")) 
-								&& !(action.equals("C")) && !(action.equals("Q"))) {	
-							break;
-						}
-						
-					}
-					else if(i == 1 && inputArr[1] != null) {
-						name = inputArr[1];
-					}
-					else if(i == 2 && inputArr[2] != null) {
-						price = Double.parseDouble(inputArr[2]);
-					}
-					else if(i == 3 && inputArr[3] != null) {
-						tax = Boolean.parseBoolean(inputArr[3]);
-					}
-					
-				}
-				
-			    
-				GroceryItem item = new GroceryItem(name, price, tax);
-				
-				//check for invalid command
-				if((!(action.equals("A")) && !(action.equals("R")) && !(action.equals("P")) 
-						&& !(action.equals("C")) && !(action.equals("Q")))) {	
-					System.out.println("Invalid command!");
-				}
-				
-				
-				if(action.equals("A")) {			//add item to bag
-					
-					bag.add(item);
-					
-				}
-				
-				else if(action.equals("R")) {		//remove item from bag
-					
-					bag.remove(item);
-					
-				}
-				
-				else if(action.equals("P"))  {		//display item from bag
-					
-					bag.print();
-					
-				}
-
-				else if(action.equals("C"))  { 		//checkout items in bag
-					
-					if (bag.getSize() < 1) {
-						System.out.println("Unable to check out, the bag is empty!");
-					}
-					else {
-						bag = checkoutBag(bag);
-					}
-						
-				}
-				
-				else if(action.equals("Q"))  { 		//quit program and automatically checkout
-					
-					if (bag.getSize() >= 1) {
-						bag = checkoutBag(bag);
-					}
-					else {
-						System.out.println("Thank you for shopping with us!");
-					}
-							
-					break;
+		Scanner sc = new Scanner(System.in); 				//create a scanner object
 		
+		while(sc.hasNext()) {								//reads keyboard input
+			
+			String[] inputArr = new String[4];
+			String str = sc.nextLine().trim();
+			StringTokenizer st = new StringTokenizer(str);
+			
+			
+			int count = 0;
+			while (st.hasMoreTokens() && count < 4) {
+		    	inputArr[count] = st.nextToken();			//appends current token to inputArr
+		    	count++;
+		    }
+			
+			String action = "";
+			String name = "";
+			double price = 0;
+			boolean tax = false;
+			
+			// iterate through inputArr which contains tokens from string input line and sets above variables to casted values 
+			for(int i = 0; i < inputArr.length; i++) {
+				
+				if(i == 0 && inputArr[0] != null) {
+					action = inputArr[0];
+					
+					if(!(action.equals("A")) && !(action.equals("R")) && !(action.equals("P")) 
+							&& !(action.equals("C")) && !(action.equals("Q"))) {	
+						break;
+					}
+					
+				}
+				else if(i == 1 && inputArr[1] != null) {
+					name = inputArr[1];
+				}
+				else if(i == 2 && inputArr[2] != null) {
+					price = Double.parseDouble(inputArr[2]);
+				}
+				else if(i == 3 && inputArr[3] != null) {
+					tax = Boolean.parseBoolean(inputArr[3]);
+				}
+				
+			}
+			
+		    
+			GroceryItem item = new GroceryItem(name, price, tax);
+			
+			//check for invalid command
+			if((!(action.equals("A")) && !(action.equals("R")) && !(action.equals("P")) 
+					&& !(action.equals("C")) && !(action.equals("Q")))) {	
+				System.out.println("Invalid command!");
+			}
+			
+			
+			if(action.equals("A")) {			//add item to bag
+				
+				bag.add(item);
+				
+			}
+			
+			else if(action.equals("R")) {		//remove item from bag
+				
+				bag.remove(item);
+				
+			}
+			
+			else if(action.equals("P"))  {		//display item from bag
+				
+				bag.print();
+				
+			}
+
+			else if(action.equals("C"))  { 		//checkout items in bag
+				
+				if (bag.getSize() < 1) {
+					System.out.println("Unable to check out, the bag is empty!");
+				}
+				else {
+					bag = checkoutBag(bag);
 				}
 					
 			}
 			
+			else if(action.equals("Q"))  { 		//quit program and automatically checkout
+				
+				if (bag.getSize() >= 1) {
+					bag = checkoutBag(bag);
+				}
+				
+				System.out.println("Thank you for shopping with us!");
+				
+				break;
+	
+			}
+				
+		}
+			
 			
 			sc.close();
 			
-			
-			
-			
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-		
 	}
-	
-	
 		
 }
